@@ -1,0 +1,11 @@
+.classpath
+.project
+.settings/
+target/
+source/
+spooned/
+*.class
+*.logs
+*.iml
+.idea/
+.eclipse
