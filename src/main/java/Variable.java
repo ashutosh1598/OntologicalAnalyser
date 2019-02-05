@@ -6,7 +6,7 @@ public class Variable
     private int timesWritten = 0;
     private boolean WrittenInLoop = false;
     private boolean ReadInLoop = false;
-    private boolean stepped = false;
+    private boolean steppedInLoop = false;
     private boolean field = false;
     private boolean isStatic = false;
     private boolean isPublic = false;
@@ -35,9 +35,9 @@ public class Variable
     {
         ReadInLoop = true;
     }
-    public void stepped()
+    public void setSteppedInLoop()
     {
-        stepped = true;
+        steppedInLoop = true;
     }
     public void setfield()
     {
@@ -77,9 +77,9 @@ public class Variable
     {
         return ReadInLoop;
     }
-    public boolean isStepped()
+    public boolean isSteppedInLoop()
     {
-        return stepped;
+        return steppedInLoop;
     }
     public boolean isField()
     {
@@ -101,9 +101,9 @@ public class Variable
 
     public void printProperties()
     {
-        System.out.println("Reference isReadOnly isWriteOnly isWriteOnce writtenInLoop readInLoop isStepped isField isStatic isPublic isReturned");
+        System.out.println("Reference isReadOnly isWriteOnly isWriteOnce writtenInLoop readInLoop isSteppedInLoop isField isStatic isPublic isReturned");
         System.out.print(reference + "\t\t" + isReadOnly() + "\t\t" + isWriteOnly() + "\t\t" + isWriteOnce() + "\t\t" + isWrittenInLoop() + "\t\t"+isReadInLoop()+ "\t\t");
-        System.out.print(isStepped() + "\t\t" + isField() + "\t\t" + isStatic() +"\t" + isPublic() + "\t" + isReturned());
+        System.out.print(isSteppedInLoop() + "\t\t" + isField() + "\t\t" + isStatic() +"\t" + isPublic() + "\t" + isReturned());
         System.out.println("\n");
 //        System.out.println(reference + "    " + timesRead + "   " + timesWritten + "  " + WrittenInLoop());
     }
