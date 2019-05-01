@@ -23,7 +23,11 @@ public class WriteProcessor extends AbstractProcessor<CtVariableWrite>
             CtElement unaryOperatorParent = element.getParent(e -> e instanceof CtUnaryOperator);
             CtElement operatorAssignmentParent = element.getParent(e -> e instanceof CtOperatorAssignment);
             CtOperatorAssignment assignment = (CtOperatorAssignment) operatorAssignmentParent;
-            BinaryOperatorKind binaryOp = assignment.getKind();
+            BinaryOperatorKind binaryOp = null;
+            if(assignment != null)
+            {
+                binaryOp = assignment.getKind();
+            }
 
             if(unaryOperatorParent != null || (operatorAssignmentParent!=null && (binaryOp == BinaryOperatorKind.PLUS || binaryOp == BinaryOperatorKind.MINUS) ) )
             {

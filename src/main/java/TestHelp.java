@@ -38,7 +38,7 @@ public class TestHelp
         {
             v.printProperties();
         }
-        new SpoonModelTree(launcher.getFactory());
+//        new SpoonModelTree(launcher.getFactory());
     }
 
 }
