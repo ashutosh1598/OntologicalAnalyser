@@ -1,7 +1,5 @@
 import spoon.processing.AbstractProcessor;
-import spoon.reflect.code.CtLoop;
-import spoon.reflect.code.CtReturn;
-import spoon.reflect.code.CtVariableRead;
+import spoon.reflect.code.*;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.reference.CtVariableReference;
 
@@ -21,6 +19,15 @@ public class ReadProcessor extends AbstractProcessor<CtVariableRead>
         if(loopParent != null)
         {
             v.readInLoop();
+            CtAssignment normAssignment = element.getParent(e -> e instanceof CtAssignment);
+            if(normAssignment != null)
+            {
+                CtExpression lhs = normAssignment.getAssigned();
+                if(lhs.toString().equals(reference.toString()))
+                {
+                    v.setSteppedInLoop();
+                }
+            }
         }
 
         CtReturn ctReturn = element.getParent(e -> e instanceof CtReturn);
